@@ -1,0 +1,32 @@
+<!-- 
+ @auther: Mei Sun <msun252@wisc.edu>
+ @version: 11/11/2020
+ -->
+
+<!DOCTYPE html>
+<html>
+	
+  <head>
+    <title> Project5: 3D table </title>
+	<style>
+	body {
+	    background-color: beige;
+	}
+	</style>
+  </head>
+  
+  
+  <body>
+    <canvas id="observerCanvas" width="600" height="450" style="border:1px solid saddlebrown;"></canvas>
+    <canvas id="cameraCanvas" width="600" height="450" style="border:1px solid saddlebrown;"></canvas>
+    </br>
+    <input id="slider1" type="range" min="0" max="100" /> Move table
+    </br>
+    <input id="slider2" type="range" min="10" max="80" />  Move box
+	</br>
+	<input id="slider3" type="range" min="0" max="100" /> Move camera around scene 
+    <script type="text/javascript" src="gl-matrix-min.js"></script>
+    <script src="p55.js" id="module"></script>
+  </body>
+  
+</html>

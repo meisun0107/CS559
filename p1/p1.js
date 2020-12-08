@@ -1,5 +1,8 @@
+// @auther: Mei Sun <msun252@wisc.edu>
+// @version: 9/16/2020
+
+var canvas = document.getElementById('myCanvas');
 function setup() { 
-  var canvas = document.getElementById('myCanvas');
   var slider1 = document.getElementById('slider1');
   slider1.value =0;
   var slider2 = document.getElementById('slider2');
@@ -26,19 +29,16 @@ function setup() {
 	var dx6 = slider6.value;
 	
 	
+	//Draw the shapes that will not move
 	function DrawFace() {
-		
-		
-		
-		
-		
-	//Draw the logo
+	
+	//Draw the “Line” logo
 	context.beginPath();
 	context.fillStyle = "darkgreen";
 	context.arc(550,400,65,0,2*Math.PI);
 	context.fill();
 	context.closePath();
-
+	
     //L
     context.beginPath();
     context.strokeStyle = "beige";
@@ -67,6 +67,7 @@ function setup() {
 	context.stroke();
 	context.closePath();
 	
+	//E
 	context.beginPath();
 	context.moveTo(600,380);
 	context.lineTo(585,380);
@@ -91,7 +92,7 @@ function setup() {
 	context.arc(350,182,20,0,2*Math.PI);
 	context.fill();
 	context.closePath();
-		
+
 	context.beginPath();
 	context.arc(450,182,20,0,2*Math.PI);	  
 	context.fill();
@@ -124,7 +125,6 @@ function setup() {
 	context.lineTo(695,200);
 	context.closePath();
 	context.fill();
-	//context.stroke();  
 	
 	context.beginPath();
 	context.fillStyle = "white";
@@ -147,7 +147,7 @@ function setup() {
 		
 	}
 
-    
+    //The inner ear of the bear
     function DrawEar() {
       context.beginPath();
        context.fillStyle = "black";
@@ -163,6 +163,7 @@ function setup() {
     }
 	
 	
+	//The eyes of the bear
 	function DrawEye() {
 	context.beginPath();
 	context.fillStyle = "black";
@@ -177,15 +178,19 @@ function setup() {
 	context.closePath(); 
 	}
 	
+	
+	//The mouth of the bear
 	function DrawMouth() {
-	    context.beginPath();
+	    
+		//The circle around the mouth
+		context.beginPath();
 	    context.arc(100,280,28,0,2*Math.PI);
 	    context.fillStyle="blanchedalmond";
 	    context.fill();
 	    context.closePath();
 	
 	
-	//Draw the mouth
+	    //Draw the mouth
 	    context.beginPath();
 	    context.fillStyle = "black";
 	    context.moveTo(92,255);
@@ -212,7 +217,7 @@ function setup() {
 	
 	
 	
-	
+	//The inner ear of the rabbit
 	function DrawEar2() {
 		context.beginPath();
 		context.fillStyle = "pink";
@@ -232,7 +237,6 @@ function setup() {
 		context.lineTo(85,172);
 		context.closePath();
 		context.fill();
-		//context.stroke();  
 		
 		
 		context.beginPath();
@@ -255,7 +259,7 @@ function setup() {
 		context.fill();
 	}
 	
-	
+	//The eyes of the rabbit
 	function DrawEye2() {
 	context.beginPath();
 	context.fillStyle = "black";
@@ -270,6 +274,7 @@ function setup() {
 	context.closePath(); 
 	}
 	
+	//The mouth of the rabbit
 	function DrawMouth2() {
 		context.beginPath();
 		context.strokeStyle = "black";
@@ -302,26 +307,34 @@ function setup() {
 		context.closePath();
 	
 	}
-	
-	
-	
-	
+
+ context.save();
+  function setup2() {
+    var y = 50;
+    function draw2() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      // use the slider to get the position
+      var x = 100;
+      // this actually draws a square
+	  context.fillStyle = "black";
+      context.beginPath();
+      context.rect(x,y,50,50);
+      context.fill();
+      y = (y + 2) % 100;
+      window.requestAnimationFrame(draw2);
+	  };
+    window.requestAnimationFrame(draw2);
+   };
+   context.restore();
+   
     
 	
-	
-	
-	
-	
-	
     DrawFace();
-	
     context.save();
 	context.translate(dx1,0);
 	DrawEar();
 	context.restore();
 	
-
-
     context.save();
     context.translate(dx2,0);
 	DrawEye();
@@ -351,6 +364,10 @@ function setup() {
 	context.translate(dx6,0);
 	DrawMouth2();
 	context.restore();
+	
+	context.save();
+	setup2();
+	context.restore();
   }
   
   slider1.addEventListener("input",draw);
@@ -362,5 +379,7 @@ function setup() {
   
   draw();
 }
+
+
+
 setup();
-//window.onload = setup;
